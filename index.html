@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <a href="/create_post" class="button">Create Post</a>
+    <div class="feed-container">
+        {% for post in posts %}
+        <div class="post-card">
+            <div class="post-image">
+                <img src="{{ post.image_url }}" alt="Post Image">
+            </div>
+            <div class="post-content">
+                <h2 class="post-title">{{ post.title }}</h2>
+                <p class="post-description">{{ post.description }}</p>
+                <div class="post-actions">
+                    <button onclick="upvotePost('{{ post.id }}', this)">
+                        <i class="fa fa-fire"></i> <span class="upvote-count">{{ post.upvotes }}</span>
+                    </button>
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Crowd: {{ post.crowd }}</span>
+                    <span class="tag">Chips: {{ post.chips }}</span>
+                    <span class="tag">Queue: {{ post.queue }}</span>
+                </div>
+                <form method="post" action="/update_post/{{ post.id }}">
+                    <input type="text" name="description" placeholder="Description" value="{{ post.description }}">
+                    <input type="text" name="crowd" placeholder="Crowd" value="{{ post.crowd }}">
+                    <input type="text" name="chips" placeholder="Chips" value="{{ post.chips }}">
+                    <input type="text" name="queue" placeholder="Queue" value="{{ post.queue }}">
+                    <button type="submit">Update</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

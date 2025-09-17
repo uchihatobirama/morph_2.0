@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Post{% endblock %}
+
+{% block content %}
+    <h1>Create New Post</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="4" cols="50"></textarea><br><br>
+
+
+        <label for="crowd">Crowd:</label><br>
+        <input type="text" id="crowd" name="crowd"><br><br>
+
+        <label for="chips">Chips:</label><br>
+        <input type="text" id="chips" name="chips"><br><br>
+
+        <label for="queue">Queue:</label><br>
+        <input type="text" id="queue" name="queue"><br><br>
+
+        <input type="submit" value="Create Post">
+    </form>
+{% endblock %}
